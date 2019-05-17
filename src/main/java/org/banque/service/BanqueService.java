@@ -4,6 +4,11 @@ import java.util.List;
 
 import org.banque.model.Client;
 
+/**
+ * @author Zineb et Stephane Interface de la couche métier relayant l'ensemble des opérations de l'interface DAO :
+ * creer, chercher, modifier, supprimer un Client ou encore de les lister
+ *
+ */
 public interface BanqueService {
 
 	public void creerClient(Client client);

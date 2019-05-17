@@ -1,0 +1,5 @@
+org.banque.model
+org.banque.persistence
+org.banque.presentation
+org.banque.service
+org.banque.ws.rest.jaxrs

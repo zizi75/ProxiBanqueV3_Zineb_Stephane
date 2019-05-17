@@ -4,10 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * @author Zineb et Stephane classe Client avec attributs id, nom, prénom, adresse postale, courriel et instance de compte
+ *
+ */
 @Entity
 @XmlRootElement(name = "client")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -19,13 +25,15 @@ public class Client {
 	private String prenom;
 	private String adresse;
 	private String email;
-//private Compte compte;
+
+	@OneToOne
+	@JoinColumn(name = "compte_id", unique = true)
+	private Compte compte;
 
 	// Constructeur
 	public Client() {
 		super();
 	}
-
 	// Getters et Setters
 	public Long getIdClient() {
 		return idClient;
@@ -66,6 +74,13 @@ public class Client {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public Compte getCompte() {
+		return compte;
+	}
+	
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
 
 	// toString
 	@Override
@@ -74,14 +89,7 @@ public class Client {
 				+ ", email=" + email + "]";
 	}
 
-//	public Compte getCompte() {
-//		return compte;
-//	}
-//
-//	public void setCompte(Compte compte) {
-//		this.compte = compte;
-//	}
-//
+
 //	// toString
 //	@Override
 //	public String toString() {
